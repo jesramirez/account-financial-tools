@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <report auto="False"
+                id="budget_webkit"
+                model="crossovered.budget"
+                name="budget.webkit.report"
+                file="account_budget_services/report/budget_webkit.mako"
+                string="Budget Webkit"
+                report_type="webkit"
+                menu="True"/>
+
+        <!-- Agregar el registro header_webkit que contiene el css de bootstrap -->
+        <record id="property_budget_webkit" model="ir.property">
+            <field name="name">webkit_header</field>
+            <field name="fields_id" ref="report_webkit.field_ir_act_report_xml_webkit_header"/>
+            <field eval="'ir.header_webkit,'+str(ref('account_budget_services.budget_header'))"
+                model="ir.header_webkit"
+                name="value"/>
+            <field eval="'ir.actions.report.xml,'+str(ref('account_budget_services.budget_webkit'))"
+                model="ir.actions.report.xml" name="res_id"/>
+        </record>
+
+
+        <!-- Imprimir Reporte en HTML -->
+        <record id="budget_webkit" model="ir.actions.report.xml">
+            <field name="webkit_debug">True</field>
+            <field name="precise_mode">True</field>
+        </record>
+
+    </data>
+</openerp>
