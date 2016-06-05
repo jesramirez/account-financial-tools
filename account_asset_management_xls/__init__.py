@@ -26,7 +26,7 @@ try:
     from . import report
 except ImportError:
     import logging
-    logging.getLogger(__name__).warn(
+    logging.getLogger(__name__).debug(
         "report_xls not available in addons path")
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
